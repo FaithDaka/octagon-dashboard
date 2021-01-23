@@ -1,0 +1,66 @@
+.otc__header{
+    margin:1%;
+}
+
+.otc__header .otc__header-logo{
+    margin-left:2%;
+}
+
+.otc__header .otc__header-logo img{
+    width:63%;
+}
+
+.otc__header .otc__header-sidebar{
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    margin-left:58%;
+}
+
+.otc__header-sidebar .__search{
+    margin-right:5%;
+}
+
+.otc__header-sidebar .__search input{
+    border:1px solid #e6f0ff;
+    outline:none!important;
+    line-height:40px;
+    width:350px;
+}
+
+.otc__header-sidebar .__icons{
+    display:flex;
+    flex-direction:row;
+    align-items:center
+}
+
+.otc__header-sidebar .__icons span{
+    background: #e6f0ff;
+    border-radius:60%;
+    width:50px;
+    height:45px;
+    text-align:center;
+    margin-right:20px;
+}
+
+.otc__header-sidebar .__icons span .fa-bell{
+    font-size:28px;
+    color: #f00;
+    margin-top:5px;
+}
+
+.otc__header-sidebar .__icons span .fa-cogs{
+    font-size:25px;
+    color: #f00;
+    margin-top:6px;
+}
+
+.otc__header-sidebar .__icons .__title{
+    font-family:'Teko';
+    margin-left:30px;
+    width:90px;
+    height:90px;
+    font-weight:800;
+    font-size:65px;
+}
