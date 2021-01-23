@@ -1,0 +1,56 @@
+.otc__login .otc__align-center{
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left:16%;
+}
+
+.otc__login .otc__logo img{
+    border:0.8px solid #0086b3;
+    width:86%;
+    margin-top:28%;
+}
+
+.otc__login .login-form{
+    margin-top:20%;
+}
+
+.otc__login .login-form input{
+    border:1px solid #e6f0ff;
+    outline:none!important;
+    margin-bottom:12%;
+    line-height:40px;
+    width:650px;
+}
+
+.otc__login .btn{
+    font-family:'Teko';
+    background-color: #ff6600;
+    margin-left:85%;
+    margin-top:10%;
+    border-radius:10px;
+    width:120px;
+    font-weight:600;
+    font-size: 25px;
+    letter-spacing:1.6px;
+}
+
+.otc__login .otc__help{
+    margin-top:4.5%;
+    float:right;
+    margin-right:3%;
+}
+
+.otc__login .otc__help button{
+    height:80px;
+    outline:none!important;
+    width:80px;
+    background: #ff6600;
+    border-radius:50%;
+}
+
+.otc__login .otc__help .fa-phone{
+    font-size:35px;
+}
