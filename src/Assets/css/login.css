@@ -33,8 +33,9 @@
     border-radius:10px;
     width:120px;
     font-weight:600;
-    font-size: 25px;
-    letter-spacing:1.6px;
+    font-size: 26px;
+    letter-spacing:1.3px;
+    text-transform:uppercase;
 }
 
 .otc__login .otc__help{

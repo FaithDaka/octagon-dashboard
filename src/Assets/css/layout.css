@@ -1,3 +1,4 @@
+/* HEADER */
 .otc__header{
     margin:1%;
 }
@@ -63,4 +64,113 @@
     height:90px;
     font-weight:800;
     font-size:65px;
+}
+
+/* LAYOUT BODY */
+.otc__layout-body{
+    margin-left:8%;
+    margin-top:4%;
+}
+
+/* TABS */
+.otc__landing a{
+    width:420px;
+}
+
+.otc__landing .otc__tabs{
+    display:flex;
+    flex-direction: column;
+}
+
+.otc__landing .otc__tab{
+    text-transform:uppercase;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:800;
+    font-size:23px;
+}
+
+.otc__landing .otc__t{
+    text-transform:capitalize;
+    color:#bbb;
+    font-family:'Montserrat';
+    font-size:18px;
+    font-weight:600;
+    margin-top:4%;
+}
+
+.otc__tab-body{
+    background:white;
+}
+
+/* DASHBOARD */
+.__dash{
+    height:600px;
+    background-color: white;
+    color:#00004d; 
+    border:1px solid white;
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+}
+.__dash-add{
+    width:30%;
+    margin-top:4%;
+    margin-left:4%;
+}
+.__dash-tab{
+    border:0.5px solid #e6f0ff;
+    margin-left:21%;
+    padding-top:15px;
+    border-radius:8%;
+    height:250px;
+    width:320px;
+    text-transform:uppercase;
+    text-align:center;
+}
+.__dash-tab span{
+    font-size:48px;
+    font-weight:600;
+}
+
+.__dash-client{
+    background-color: #ddd;
+    position: absolute;
+    left:12%;
+    margin-top:-4%;
+    padding: 35px 50px 40px 35px;
+    height:130px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+.__dash-company{
+    background:#ddd;
+    position: absolute;
+    left:25%;
+    margin-top:-4%;
+    padding: 35px 50px 40px 40px;
+    height:130px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+.__dash-client span{
+    font-size:30px;
+    font-weight:500;
+    text-transform:uppercase
+}
+.__dash-company span{
+    font-size:30px;
+    font-weight:500;
+    text-transform:uppercase
+}
+.__dash .__table{
+    width:60%;
+    margin-left:6%;
 }
