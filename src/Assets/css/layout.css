@@ -214,6 +214,7 @@
 .modal-content {
     border: none;
     background-color: #ffffff;
+    width:700px;
 }
 
 .modal-header {

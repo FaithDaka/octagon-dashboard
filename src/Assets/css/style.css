@@ -108,3 +108,10 @@ input{
     padding:11px;
     text-overflow: wrap;
 }
+
+/* ADD CASE */
+.otc__add-case input{
+    height:300px;
+    font-size:25px;
+    letter-spacing:0.3px;
+}

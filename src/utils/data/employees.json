@@ -1,0 +1,35 @@
+{
+    "employees":[
+        {
+            "name":"Faith Daka",
+            "role":"Administrator",
+            "id":1,
+            "case":1
+        },
+        {
+            "name":"Sarah Doe",
+            "id":2,
+            "case":1
+        },
+        {
+            "name":"John Doe",
+            "id":3,
+            "case":0
+        },
+        {
+            "name":"Charlice Uni",
+            "id":4,
+            "case":1
+        },
+        {
+            "name":"Zen Wilson",
+            "id":5,
+            "case":0
+        },
+        {
+            "name":"Tekken Two",
+            "id":6,
+            "case":1
+        }
+    ]
+}

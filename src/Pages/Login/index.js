@@ -1,10 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LoadSpinner from '../../Components/LoadSpinner'
 import logo from '../../Assets/img/logo512.png'
 import '../../Assets/css/login.css'
+import { useHistory, withRouter } from 'react-router-dom'
 
 const Login = () => {
-  const loading = false;
+  const [values, setValues] = useState({
+    email: '',
+    password: '',
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (name) => (event) => {
+    setValues({ ...values, [name]: event.target.value });
+  };
+
+  const history = useHistory()
+
+  const clickSubmit = (event) => {
+    event.preventDefault();
+    setLoading(true);
+
+    if (values.password === 'password' || values.email === 'admin@gmail.com') {
+      setValues({
+        ...values,
+      });
+      setLoading(false);
+      history.push('/landing')
+    }
+    else{
+      setValues({
+        ...values,
+      });
+      setLoading(false);
+    }
+  }
 
   return (
     <div className='otc__login'>
@@ -22,6 +52,8 @@ const Login = () => {
                   type='text'
                   className='form-control'
                   placeholder='username or email'
+                  name='email'
+                  onChange={handleChange('email')}
                   required/>
               </div>
               <div className='form-group'>
@@ -29,9 +61,11 @@ const Login = () => {
                   type='password'
                   className='form-control'
                   placeholder='Password'
+                  name='password'
+                  onChange={handleChange('password')}
                   required/>
               </div>
-              <button type='submit' className='btn btn-warning'>
+              <button type='submit' className='btn btn-warning' onClick={clickSubmit}>
                 {loading ? <LoadSpinner /> : 'Sign In'}
               </button>
             </div>
@@ -49,5 +83,5 @@ const Login = () => {
   )
 }
 
-export default Login
+export default withRouter(Login)
 

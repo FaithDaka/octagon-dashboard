@@ -1,11 +1,10 @@
 import React from 'react'
-import CaseManagement from '../../Pages/Cases'
+import CaseTable from '../../Pages/Cases/CaseTable'
 
 const Case = () => {
   return (
     <div className='otc__tab-body'>
-      <CaseManagement/>
-            
+      <CaseTable/>
     </div>
   )
 }

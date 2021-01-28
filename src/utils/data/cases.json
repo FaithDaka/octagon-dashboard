@@ -1,0 +1,58 @@
+{
+    "cases":[
+        {
+            "id":1,
+            "name":"Evation",
+            "category":"VAT",
+            "client":"Chase John",
+            "created_by":"Sarah Doe",
+            "assigned_to":"John Doe",
+            "date_created":"01-01-21"
+        },
+        {
+            "id":2,
+            "name":"Retirement",
+            "category":"NSSF",
+            "client":"Musoke Ian",
+            "created_by":"Faith Daka",
+            "assigned_to":"Faith Daka",
+            "date_created":"01-11-21"
+        },
+        {
+            "id":3,
+            "name":"Over-due",
+            "category":"UBRA",
+            "client":"Cynthia Wright",
+            "created_by":"Faith Daka",
+            "assigned_to":"Sarah Doe",
+            "date_created":"01-09-21"
+        },
+        {
+            "id":4,
+            "name":"Evation",
+            "category":"VAT",
+            "client":"Chase John",
+            "created_by":"Sarah Doe",
+            "assigned_to":"John Doe",
+            "date_created":"01-01-21"
+        },
+        {
+            "id":5,
+            "name":"Payment Scheme",
+            "category":"URA",
+            "client":"John Relit",
+            "created_by":"Sarah Doe",
+            "assigned_to":"Charlice Uni",
+            "date_created":"01-11-21"
+        },
+        {
+            "id":6,
+            "name":"Evation",
+            "category":"VAT",
+            "client":"Chase John",
+            "created_by":"Sarah Doe",
+            "assigned_to":"Tekken Two",
+            "date_created":"01-01-21"
+        }
+    ]
+}
