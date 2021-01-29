@@ -1,0 +1,48 @@
+{
+    "clients":[
+        {
+            "id":1,
+            "name":"John Chase",
+            "email":"johnc@outlook.com",
+            "tin":"gh5678920-1-jfn",
+            "phone":"0774568932",
+            "dob":"02-03-1989",
+            "address":"plot 24, luthuli",
+            "website":"www.endro.co.au",
+            "residence":"uganda"
+        },
+        {
+            "id":1,
+            "name":"John Chase",
+            "email":"johnc@outlook.com",
+            "tin":"gh5678920-1-jfn",
+            "phone":"0774568932",
+            "dob":"02-03-1989",
+            "address":"plot 24, luthuli",
+            "website":"www.endro.co.au",
+            "residence":"uganda"
+        },
+        {
+            "id":1,
+            "name":"John Chase",
+            "email":"johnc@outlook.com",
+            "tin":"gh5678920-1-jfn",
+            "phone":"0774568932",
+            "dob":"02-03-1989",
+            "address":"plot 24, luthuli",
+            "website":"www.endro.co.au",
+            "residence":"uganda"
+        },
+        {
+            "id":1,
+            "name":"John Chase",
+            "email":"johnc@outlook.com",
+            "tin":"gh5678920-1-jfn",
+            "phone":"0774568932",
+            "dob":"02-03-1989",
+            "address":"plot 24, luthuli",
+            "website":"www.endro.co.au",
+            "residence":"uganda"
+        }
+    ]
+}

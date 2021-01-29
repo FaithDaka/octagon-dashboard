@@ -35,7 +35,7 @@ const CaseTable = () => {
             <table className='table table-responsive table-striped'>
               <thead>
                 <tr>
-                  <th>Client</th>
+                  <th>ID</th>
                   <th>Case</th>
                   <th>Created By</th>
                   <th>Assigned To</th>
@@ -47,7 +47,7 @@ const CaseTable = () => {
                 {
                   data.length>0 ? data.map((cases)=>(
                     <tr key={cases.id}>
-                      <th>{cases.client}</th>
+                      <th>OTC-{cases.id}</th>
                       <th>
                         {cases.name}
                         <span className='badge badge-warning'

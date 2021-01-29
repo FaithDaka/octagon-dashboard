@@ -1,5 +1,6 @@
 import React from 'react'
 
+// eslint-disable-next-line react/prop-types
 const Modal = ({ children, title, show, close }) => {
 
   const showHideClassName = show ? 'modal fade show display-block' : 'modal display-none';
