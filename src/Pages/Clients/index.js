@@ -26,7 +26,7 @@ const ClientTable = () => {
             <Link onClick={openModal}><i className='fa fa-plus-circle'></i></Link>
           </span>
         </div>
-        <Modal show={show} close={closeModal} title="Add New Case">
+        <Modal show={show} close={closeModal} title="Add New Client">
           <AddClient close={closeModal} />
         </Modal>
         <div className='__table'>
