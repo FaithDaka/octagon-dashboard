@@ -10,13 +10,15 @@ const ClientTable = () => {
   const openModal = () => setShow(true);
   const closeModal = () => setShow(false);
 
-  useEffect(()=>(
-    setData(clients)
-  ),[])
+  const loadData=()=>{
+    const data = JSON.parse(JSON.stringify(clients))
+    setData(data);
+  }
 
   useEffect(()=>(
-    setData(data)
-  ))
+    loadData()
+  ),[])
+
   return (
     <div className='otc__case container-fluid'>
       <div className='__case-window column'>
@@ -45,13 +47,12 @@ const ClientTable = () => {
               {
                 data.length>0 ? data.map((client)=>(
                   <tr key={client.id}>
-                    <th>{client.name}</th>
+                    <Link to ='/client-profile' style={{textDecoration:'underline'}}><th>{client.name}</th></Link>
                     <th>
                       {client.name}
-                      <span className='badge badge-warning'
-                        style={{marginLeft:'8px', fontSize:'18px'}}>
-                        {client.tin}
-                      </span>
+                    </th>
+                    <th>
+                      {client.tin}
                     </th>
                     <th>{client.email}</th>
                     <th>{client.phone}</th>

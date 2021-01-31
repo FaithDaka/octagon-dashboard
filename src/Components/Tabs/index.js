@@ -5,9 +5,12 @@ import Dashboard from './Dashboard';
 
 const Tabs = () => {
   const [currentTab, setCurrentTab] = useState('dashboard');
+  // const tab = currentTab ? 'nav-item nav-link active' : 'nav-item nav-link'
+  let tab= 'nav-item nav-link';
 
   const renderView = () => {
     if (currentTab === 'dashboard') {
+      tab = 'nav-item nav-link active'
       return <Dashboard />;
     }
     if (currentTab === 'client') {
@@ -27,7 +30,7 @@ const Tabs = () => {
               <div className="nav nav-tabs nav-justified" id="nav-tab" role="tablist" style={{ border: 'none' }}>
                 <a
                   href='#dashboard'
-                  className="nav-item nav-link active"
+                  className={tab}
                   id="nav-home-tab"
                   data-toggle="tab"
                   role="tab"
@@ -48,7 +51,7 @@ const Tabs = () => {
                 </a>
                 <a
                   href='#client'
-                  className="nav-item nav-link "
+                  className={tab}
                   id="nav-home-tab"
                   data-toggle="tab"
                   role="tab"
@@ -63,7 +66,7 @@ const Tabs = () => {
                 </a>
                 <a
                   href='#case'
-                  className="nav-item nav-link "
+                  className={tab}
                   id="nav-home-tab"
                   data-toggle="tab"
                   role="tab"
@@ -78,13 +81,13 @@ const Tabs = () => {
                 </a>
                 <a
                   href='#contact'
-                  className="nav-item nav-link "
+                  className={tab}
                   id="nav-home-tab"
                   data-toggle="tab"
                   role="tab"
                   aria-controls="nav-home"
                   aria-selected="true"
-                  onClick={() => setCurrentTab('client')}
+                  onClick={() => setCurrentTab('contact')}
                 >
                   <div className='otc__tabs'>
                     <span className='otc__tab'>Contact</span>

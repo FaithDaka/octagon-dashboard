@@ -6,18 +6,22 @@ import AddCase from './AddCase'
 import cases from '../../utils/data/cases.json'
 
 const CaseTable = () => {
-  const[data, setData] = useState([]);
+  const [data, setData] = useState([])
   const [show, setShow] = useState(false);
   const openModal = () => setShow(true);
   const closeModal = () => setShow(false);
 
-  useEffect(()=>(
-    setData(cases)
-  ),[])
+  const loadData = () =>{
+    const data = JSON.parse(JSON.stringify(cases))
+    console.log(data)
+    setData(data);
+  }
 
   useEffect(()=>(
-    console.log(data)
-  ))
+    loadData()
+  ),[])
+
+  
   return (
     <CaseManagement>
       <div className='otc__case container-fluid'>
@@ -35,8 +39,8 @@ const CaseTable = () => {
             <table className='table table-responsive table-striped'>
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Case</th>
+                  <th style={{width:'120px'}}>ID</th>
+                  <th style={{width:'350px'}}>Case</th>
                   <th>Created By</th>
                   <th>Assigned To</th>
                   <th>Date Created</th>
@@ -50,7 +54,7 @@ const CaseTable = () => {
                       <th>OTC-{cases.id}</th>
                       <th>
                         {cases.name}
-                        <span className='badge badge-warning'
+                        <span className='badge badge-warning float-right'
                           style={{marginLeft:'8px', fontSize:'18px'}}>
                           {cases.category}
                         </span>

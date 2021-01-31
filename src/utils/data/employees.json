@@ -1,5 +1,4 @@
-{
-    "employees":[
+[
         {
             "name":"Faith Daka",
             "role":"Administrator",
@@ -32,4 +31,3 @@
             "case":1
         }
     ]
-}

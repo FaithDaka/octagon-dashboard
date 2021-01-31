@@ -1,5 +1,5 @@
-{
-    "cases":[
+
+    [
         {
             "id":1,
             "name":"Evation",
@@ -55,4 +55,3 @@
             "date_created":"01-01-21"
         }
     ]
-}

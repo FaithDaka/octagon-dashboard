@@ -1,22 +1,26 @@
-{
-    "categories":[
+[
         {
-            "1":"NSSF"
+            "id":1,
+            "name":"NSSF"
         },
         {
-            "2":"VAT"
+            "id":2,
+            "name":"VAT"
         },
         {
-            "3":"URA"
+            "id":3,
+            "name":"URA"
         },
         {
-            "4":"UBRA"
+            "id":4,
+            "name":"UBRA"
         },
         {
-            "5":"BOU"
+            "id":5,
+            "name":"BOU"
         },
         {
-            "6":"FTP"
+            "id":6,
+            "name":"FTP"
         }
     ]
-}

@@ -115,3 +115,11 @@ input{
     font-size:25px;
     letter-spacing:0.3px;
 }
+.otc__add-case select{
+    font-size:22px;
+    letter-spacing:0.4px;
+}
+.otc__add-case option{
+    font-size:25px;
+    letter-spacing:0.4px;
+}
