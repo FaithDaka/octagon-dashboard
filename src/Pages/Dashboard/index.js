@@ -77,16 +77,16 @@ const DashboardPage = () => {
                       cases.assigned===null ? 
                         <button
                           style={{fontSize:'18px', textTransform:'uppercase',
-                            outline:'none', borderRadius:'15%', width:'120px', height:'38px'}}
-                          onClick={openReassign}>
-                    ReAssign
+                            outline:'none', borderRadius:'15%', width:'100px', height:'38px'}}
+                          onClick={openAssign}>
+                    Assign
                         </button>
                         :
                         <button
                           style={{fontSize:'18px', textTransform:'uppercase',
-                            outline:'none', borderRadius:'15%', width:'100px', height:'38px'}}
-                          onClick={openAssign}>
-                  Assign
+                            outline:'none', borderRadius:'15%', width:'120px', height:'38px'}}
+                          onClick={openReassign}>
+                  ReAssign
                         </button>
                     }
                   </th>
