@@ -13,7 +13,6 @@ const CaseTable = () => {
 
   const loadData = () =>{
     const data = JSON.parse(JSON.stringify(cases))
-    console.log(data)
     setData(data);
   }
 

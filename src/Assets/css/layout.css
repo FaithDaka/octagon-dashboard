@@ -172,7 +172,7 @@
 .__dash .__table{
     width:60%;
     margin-left:5%;
-    margin-top:-15%;
+    margin-top:-2%;
 }
 .__dash .__table thead tr th{
     /* border:0.5px solid #0080b3;    */
@@ -214,7 +214,8 @@
 .modal-content {
     border: none;
     background-color: #ffffff;
-    width:700px;
+    width:750px;
+    margin-left:-18%;
 }
 
 .modal-header {
@@ -231,7 +232,7 @@
 }
 
 .modal-header .close {
-    color: #ffffff;
+    color: #010101;
 }
 
 .modal-body {

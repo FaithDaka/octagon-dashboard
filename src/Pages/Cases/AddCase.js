@@ -4,11 +4,17 @@ import LoadSpinner from '../../Components/LoadSpinner'
 import emps from '../../utils/data/employees.json'
 import clients from '../../utils/data/clients.json'
 import categories from '../../utils/data/categories.json'
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 const AddCase = () => {
   const [_emp, setEmp] = useState([])
   const [client, setClient] = useState([])
   const [cat, setCat] = useState([])
+
+  const [showAlert, setShowAlert] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+  const hideAlert = () => setShowAlert(false)||setError('');
  
   const [loading, setLoading]= useState(false)
 
@@ -46,7 +52,9 @@ const AddCase = () => {
     setTimeout(() => {
       setLoading(false)
     }, 2000);
-    console.log('Success!')
+
+    setShowAlert(true);
+    setSuccess('Successfully Created')
     e.target.reset();
   }
 
@@ -56,6 +64,24 @@ const AddCase = () => {
 
   return (
     <CaseManagement>
+      {showAlert && success && (
+        <SweetAlert
+          success
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          title={success}
+          timeout={3000}
+        />
+      )}
+      {showAlert && error && (
+        <SweetAlert
+          danger
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          title={error}
+          timeout={4000}
+        />
+      )}
       <div className="otc__add-case card">
         <div className="card-header" />
         <div className="card-body">

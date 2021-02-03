@@ -4,6 +4,7 @@ import Individual from './Individual';
 
 const AddClient = () => {
   const [currentTab, setCurrentTab] = useState('individual');
+  const [tab, setTab] = useState(0);
 
   const renderView = () => {
     if (currentTab === 'individual') {
@@ -14,6 +15,10 @@ const AddClient = () => {
     }
   };
 
+  const handleToggle=(key)=>{
+    setTab(key);
+  }
+
   return (
     <div className='otc__add-client'>
       <div className='container-fluid'>
@@ -22,37 +27,38 @@ const AddClient = () => {
             <nav>
               <div className="nav nav-tabs nav-justified" id="nav-tab" role="tablist" style={{ border: 'none' }}>
                 <a
-                  href='#dashboard'
-                  className="nav-item nav-link active"
+                  href='#individual'
                   id="nav-home-tab"
                   data-toggle="tab"
                   role="tab"
                   aria-controls="nav-home"
                   aria-selected="true"
-                  onClick={() => setCurrentTab('individual')}
+                  onClick={() => {setCurrentTab('individual'), handleToggle(1)}}
+                  // eslint-disable-next-line react/jsx-no-duplicate-props
+                  className={tab === 1 ? 'nav-item nav-link active' : 'nav-item nav-link'}
                   style={{
                     borderTop: 'none',
                     borderLeft: 'none',
-                    borderRight: 'none',
-                    marginRight: '2%'
+                    borderRight: 'none'
                   }}
                 >
-                  <div className='otc__tabs'>
-                    <span className='otc__tab'>Individual</span>
+                  <div className='otc__tabs-c'>
+                    <span className='otc__tab-c'>Individual</span>
                   </div>
                 </a>
                 <a
-                  href='#client'
-                  className="nav-item nav-link "
+                  href='#company'
                   id="nav-home-tab"
                   data-toggle="tab"
                   role="tab"
                   aria-controls="nav-home"
                   aria-selected="true"
-                  onClick={() => setCurrentTab('company')}
+                  onClick={() => {setCurrentTab('company'), handleToggle(2)}}
+                  // eslint-disable-next-line react/jsx-no-duplicate-props
+                  className={tab === 2 ? 'nav-item nav-link active' : 'nav-item nav-link'}
                 >
-                  <div className='otc__tabs'>
-                    <span className='otc__tab'>Company</span>
+                  <div className='otc__tabs-c'>
+                    <span className='otc__tab-c'>Company</span>
                   </div>
                 </a>
               </div>

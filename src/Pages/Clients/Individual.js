@@ -8,43 +8,61 @@ const Individual = () => {
         <form>
           <div className="form-group">
             <label>Name</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="full name"
-            />
+            <div className=" container-fluid">
+              <div className='row'>
+                <input
+                  type="text"
+                  className="form-control name"
+                  placeholder="first name"
+                />
+                <input
+                  type="text"
+                  className="form-control name"
+                  placeholder="middle name"
+                />
+                <input
+                  type="text"
+                  className="form-control name"
+                  placeholder="last name"
+                />
+              </div>
+            </div>
           </div>
-          <div className="form-group">
-            <label>D.O.B</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="date of birth"
-            />
+          <div className="row">
+            <div className="form-group dob">
+              <label>D.O.B</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="date of birth"
+              />
+            </div>
+            <div className="form-group email">
+              <label>Email Address</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="email address"
+              />
+            </div>
           </div>
-          <div className="form-group">
-            <label>Email Address</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="email address"
-            />
-          </div>
-          <div className="form-group">
-            <label>Mobile Number</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="mobile number"
-            />
-          </div>
-          <div className="form-group">
-            <label>TIN</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="TIN"
-            />
+          <div className="row">
+            <div className="form-group number">
+              <label>Mobile Number</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="e.g +256-..."
+              />
+            </div>
+            <div className="form-group tin">
+              <label>TIN</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="TIN"
+              />
+            </div>
           </div>
           <div className="form-group">
             <label>Address</label>

@@ -25,7 +25,10 @@ const Login = () => {
       setValues({
         ...values,
       });
-      setLoading(false);
+      setTimeout(()=>{
+        setLoading(true);
+      },3000)
+      setLoading(false)
       history.push('/landing')
     }
     else{

@@ -123,3 +123,41 @@ input{
     font-size:25px;
     letter-spacing:0.4px;
 }
+
+/* ADD CLIENT */
+.otc__tabs-c{
+    border-bottom:1px solid red;
+}
+.otc__tabs-c span{
+    float:left;
+    font-size:25px;
+    text-transform:uppercase;
+}
+.form-control.name{
+    width:215px;
+    margin-right:5px;
+}
+.form-group.dob{
+    width:250px;
+    margin-left:2%;
+}
+.form-group.email{
+    margin-left:3%;
+    width:400px;
+}
+.form-group.number{
+    width:250px;
+    margin-left:2%;
+}
+.form-group.tin{
+    margin-left:3%;
+    width:400px;
+}
+.form-group.left{
+    width:270px;
+    margin-left:2%;
+}
+.form-group.right{
+    margin-left:3%;
+    width:370px;
+}

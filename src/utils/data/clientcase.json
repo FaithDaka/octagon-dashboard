@@ -1,0 +1,38 @@
+[
+    {
+        "id":1,
+        "client": "John Trent",
+        "case": "Evation",
+        "assigned":"Sarah Doe"
+    },
+    {
+        "id":2,
+        "client": "John Trent",
+        "case": "Evation",
+        "assigned":"Sarah Doe"
+    },
+    {
+        "id":3,
+        "client": "John Trent",
+        "case": "Evation",
+        "assigned":null
+    },
+    {
+        "id":4,
+        "client": "John Trent",
+        "case": "Evation",
+        "assigned":"Sarah Doe"
+    },
+    {
+        "id":5,
+        "client": "John Trent",
+        "case": "Evation",
+        "assigned":null
+    },
+    {
+        "id":6,
+        "client": "John Trent",
+        "case": "Evation",
+        "assigned":"Sarah Doe"
+    }
+]

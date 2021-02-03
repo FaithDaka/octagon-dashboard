@@ -7,60 +7,92 @@ const Company = () => {
       <div className="card-body">
         <form>
           <div className="form-group">
-            <label>Name</label>
+            <label> Company Name</label>
             <input
               type="text"
               className="form-control"
               placeholder="full name"
             />
           </div>
-          <div className="form-group">
-            <label>D.O.B</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="date of birth"
-            />
+          <div className="row">
+            <div className="form-group left">
+              <label>Website URL</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+              />
+            </div>
+            <div className="form-group right">
+              <label>Email Address</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="email address"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="form-group left">
+              <label>Company Number</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="+256..."
+              />
+            </div>
+            <div className="form-group right">
+              <label>TIN</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="form-group left">
+              <label>Address</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="e.g plot 24 luthuli avenue"
+              />
+            </div>
+            <div className="form-group right">
+              <label>Country of Operation</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="email address"
+              />
+            </div>
           </div>
           <div className="form-group">
-            <label>Email Address</label>
+            <label>Name of Correspondent</label>
             <input
               type="text"
               className="form-control"
-              placeholder="email address"
+              placeholder="full name"
             />
           </div>
-          <div className="form-group">
-            <label>Mobile Number</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="mobile number"
-            />
-          </div>
-          <div className="form-group">
-            <label>TIN</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="TIN"
-            />
-          </div>
-          <div className="form-group">
-            <label>Address</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="home address"
-            />
-          </div>
-          <div className="form-group">
-            <label>Country of Residence</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="country of residence"
-            />
+          <div className="row">
+            <div className="form-group left">
+              <label>Email Address</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+              />
+            </div>
+            <div className="form-group right">
+              <label>Phone Number</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="+256..."
+              />
+            </div>
           </div>
           <button type="submit" className="btn btn-primary">
         Create Client

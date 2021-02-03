@@ -5,12 +5,10 @@ import Dashboard from './Dashboard';
 
 const Tabs = () => {
   const [currentTab, setCurrentTab] = useState('dashboard');
-  // const tab = currentTab ? 'nav-item nav-link active' : 'nav-item nav-link'
-  let tab= 'nav-item nav-link';
+  const [tab, setTab] = useState(0);
 
   const renderView = () => {
     if (currentTab === 'dashboard') {
-      tab = 'nav-item nav-link active'
       return <Dashboard />;
     }
     if (currentTab === 'client') {
@@ -21,6 +19,10 @@ const Tabs = () => {
     }
   };
 
+  const handleToggle=(key)=>{
+    setTab(key);
+  }
+
   return (
     <div className='otc__landing'>
       <div className='container-fluid'>
@@ -30,18 +32,17 @@ const Tabs = () => {
               <div className="nav nav-tabs nav-justified" id="nav-tab" role="tablist" style={{ border: 'none' }}>
                 <a
                   href='#dashboard'
-                  className={tab}
                   id="nav-home-tab"
                   data-toggle="tab"
                   role="tab"
                   aria-controls="nav-home"
                   aria-selected="true"
-                  onClick={() => setCurrentTab('dashboard')}
+                  onClick={() => {setCurrentTab('dashboard'), handleToggle(1)}}
+                  className={tab === 1 ? 'nav-item nav-link active' : 'nav-item nav-link'}
                   style={{
                     borderTop: 'none',
                     borderLeft: 'none',
-                    borderRight: 'none',
-                    marginRight: '2%'
+                    borderRight: 'none'
                   }}
                 >
                   <div className='otc__tabs'>
@@ -57,7 +58,9 @@ const Tabs = () => {
                   role="tab"
                   aria-controls="nav-home"
                   aria-selected="true"
-                  onClick={() => setCurrentTab('client')}
+                  onClick={() => {setCurrentTab('client'), handleToggle(2)}}
+                  // eslint-disable-next-line react/jsx-no-duplicate-props
+                  className={tab === 2 ? 'nav-item nav-link active' : 'nav-item nav-link'}
                 >
                   <div className='otc__tabs'>
                     <span className='otc__tab'>Client Management</span>
@@ -72,7 +75,9 @@ const Tabs = () => {
                   role="tab"
                   aria-controls="nav-home"
                   aria-selected="true"
-                  onClick={() => setCurrentTab('case')}
+                  onClick={() => {setCurrentTab('case'), handleToggle(3)}}
+                  // eslint-disable-next-line react/jsx-no-duplicate-props
+                  className={tab === 3 ? 'nav-item nav-link active' : 'nav-item nav-link'}
                 >
                   <div className='otc__tabs'>
                     <span className='otc__tab'>Case Management</span>
@@ -87,7 +92,9 @@ const Tabs = () => {
                   role="tab"
                   aria-controls="nav-home"
                   aria-selected="true"
-                  onClick={() => setCurrentTab('contact')}
+                  onClick={() => {setCurrentTab('contact'), handleToggle(4)}}
+                  // eslint-disable-next-line react/jsx-no-duplicate-props
+                  className={tab === 4 ? 'nav-item nav-link active' : 'nav-item nav-link'}
                 >
                   <div className='otc__tabs'>
                     <span className='otc__tab'>Contact</span>

@@ -5,7 +5,7 @@ import AddClient from './AddClient'
 import clients from '../../utils/data/clients.json'
 
 const ClientTable = () => {
-  const[data, setData] = useState([]);
+  const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
   const openModal = () => setShow(true);
   const closeModal = () => setShow(false);
