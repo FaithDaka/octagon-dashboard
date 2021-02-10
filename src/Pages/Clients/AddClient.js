@@ -1,86 +1,30 @@
-import React, { useState } from 'react'
-import Company from './Company';
-import Individual from './Individual';
+import React from 'react'
+import { Link } from 'react-router-dom';
+import ClientManagement from './ClientManagement';
 
-const AddClient = ({ close }) => {
-  const [currentTab, setCurrentTab] = useState('individual');
-  const [tab, setTab] = useState(0);
-
-  const renderView = () => {
-    if (currentTab === 'individual') {
-      return <Individual close={close} />;
-    }
-    if (currentTab === 'company') {
-      return <Company close={close} />;
-    }
-  };
-
-  const handleToggle=(key)=>{
-    setTab(key);
-  }
+// eslint-disable-next-line react/prop-types
+const AddClient = ({ children }) => {
 
   return (
-    <div className='otc__add-client'>
+    <ClientManagement>
       <div className='container-fluid'>
-        <div className='row'>
-          <div className='col-xs-12'>
-            <nav>
-              <div className="nav nav-tabs nav-justified" id="nav-tab" role="tablist" style={{ border: 'none' }}>
-                <a
-                  href='#individual'
-                  id="nav-home-tab"
-                  data-toggle="tab"
-                  role="tab"
-                  aria-controls="nav-home"
-                  aria-selected="true"
-                  onClick={() => {setCurrentTab('individual'), handleToggle(1)}}
-                  // eslint-disable-next-line react/jsx-no-duplicate-props
-                  className={tab === 1 ? 'nav-item nav-link active' : 'nav-item nav-link'}
-                  style={{
-                    borderTop: 'none',
-                    borderLeft: 'none',
-                    borderRight: 'none'
-                  }}
-                >
-                  <div className='otc__tabs-c'>
-                    <span className='otc__tab-c'>Individual</span>
-                  </div>
-                </a>
-                <a
-                  href='#company'
-                  id="nav-home-tab"
-                  data-toggle="tab"
-                  role="tab"
-                  aria-controls="nav-home"
-                  aria-selected="true"
-                  onClick={() => {setCurrentTab('company'), handleToggle(2)}}
-                  // eslint-disable-next-line react/jsx-no-duplicate-props
-                  className={tab === 2 ? 'nav-item nav-link active' : 'nav-item nav-link'}
-                >
-                  <div className='otc__tabs-c'>
-                    <span className='otc__tab-c'>Company</span>
-                  </div>
-                </a>
-              </div>
-            </nav>
-
-            <div
-              className="tab-content"
-              style={{
-                border: '#d3d3d3 solid',
-                borderWidth: 'thin'
-              }}
-            >
-              <div className="tab-pane active show" role="tabpanel">
-                {renderView()}
-              </div>
+        <div className='row'> 
+          <div className='__links'>
+            <div className='column'>
+              <Link to='/clients/add/individual'>
+                <h2>Add Individual</h2>
+              </Link>
+              <Link to='/clients/add/company'>
+                <h2>Add Company</h2>
+              </Link>
             </div>
-
+          </div>
+          <div className='__form'>
+            {children}
           </div>
         </div>
       </div>
-            
-    </div>
+    </ClientManagement>
   )
 }
 

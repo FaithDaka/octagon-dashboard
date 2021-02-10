@@ -2,16 +2,15 @@ import React, { useEffect, useState } from 'react'
 import Modal from '../../Components/Modal';
 import Assign from '../../Components/Modal/Assign';
 import ReAssign from '../../Components/Modal/ReAssign';
-import AddClient from '../Clients/AddClient';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import Layout from '../../Components/Layout';
+import { Link } from 'react-router-dom';
 
 const DashboardPage = () => {
   var NewCC = JSON.parse(localStorage.getItem('ClientCase'));
 
   const [assign, setAssign] = useState(false);
   const [reassign, setReassign] = useState(false);
-  const [add, setAdd] = useState(false);
 
   const [id, setId] = useState()
   const [c_name, setCName] = useState('')
@@ -35,9 +34,6 @@ const DashboardPage = () => {
   }
 
   const closeReassign = () => setReassign(false);
-
-  const openAdd = () => setAdd(true)
-  const closeAdd = () => setAdd(false)
 
   const [showAlert, setShowAlert] = useState('');
   const [error, setError] = useState('');
@@ -85,9 +81,6 @@ const DashboardPage = () => {
         <Modal show={reassign} close={closeReassign} title="Re-Assign Case to Employee">
           <ReAssign close={closeReassign} id={id} case_name={c_name} assigned={assn} client={client} />
         </Modal>
-        <Modal show={add} close={closeAdd} title="Add New Client">
-          <AddClient close={closeAdd} />
-        </Modal>
         <div className='__dash-add'>
           <div className='__dash-tab'>
             <span>Create Client Profile</span>
@@ -95,11 +88,11 @@ const DashboardPage = () => {
           <div className='row'>
             <div className='__dash-client'>
               <i className='fa fa-user' style={{marginRight:'10px', fontSize:'26px', color:'#f00'}}></i>
-              <span> <a onClick={openAdd}>Add Individual</a> </span>
+              <span> <Link to='/clients/add/individual'>Add Individual</Link> </span>
             </div>
             <div className='__dash-company'>
               <i className='fa fa-users' style={{marginRight:'10px', fontSize:'28px', color:'#f00'}}></i>
-              <span> <a onClick={openAdd}>Add Company</a></span>
+              <span> <Link to='/clients/add/company'>Add Company</Link></span>
             </div>
           </div>
         </div>

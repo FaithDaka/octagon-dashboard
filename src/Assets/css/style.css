@@ -79,6 +79,7 @@ input{
 .otc__case{
     border:1px solid white;
     background:white;
+    margin-bottom: 4%;
 }
 .__case-window{
     margin-top:5%;
@@ -128,7 +129,8 @@ input{
 /* ADD CASE */
 .otc__add-case{
     margin-left:5%;
-    height:600px;
+    margin-bottom:4%;
+    height:auto;
     border:none;
 }
 .otc__add-case .row h2{
@@ -142,7 +144,7 @@ input{
     margin-right:2%;
     border-left:0.5px solid #aaa;
     background-color: #ccc;
-    margin-left:16%;
+    margin-left:14%;
     padding:20px;
 }
 .otc__add-case input{
@@ -178,40 +180,84 @@ input{
     font-size:20px;
     text-transform: uppercase;
 }
+
+
 /* ADD CLIENT */
-.otc__tabs-c{
-    border-bottom:1px solid red;
+.__links{
+    margin-left:8%;
 }
-.otc__tabs-c span{
-    float:left;
-    font-size:25px;
-    text-transform:uppercase;
+.__links h2{
+    font-size: 45px;
+    text-decoration:underline;
+    text-transform: uppercase;
+    margin-top:30%;
+}
+.__form{
+    margin-left:15%;
+}
+.otc__add-client{
+    margin-bottom:4%;
+    height:auto;
+    border:none;
+}
+.otc__add-client .card-body{
+    margin-top:3.5%;
+    border-left:0.5px solid #aaa;
+    background-color: #ccc;
+    padding:10px;
 }
 .form-control.name{
-    width:215px;
+    width:300px;
     margin-right:5px;
+    margin-bottom:3%;
 }
 .form-group.dob{
-    width:250px;
+    width:400px;
     margin-left:2%;
+    margin-bottom:4%;
 }
 .form-group.email{
     margin-left:3%;
-    width:400px;
+    width:475px;
 }
 .form-group.number{
-    width:250px;
+    width:400px;
     margin-left:2%;
+    margin-bottom:3%;
 }
 .form-group.tin{
     margin-left:3%;
-    width:400px;
+    width:475px;
 }
-.form-group.left{
-    width:270px;
-    margin-left:2%;
+.otc__add-client .card-body .btn{
+    margin-left:1%;
+    font-size:20px;
+    text-transform: uppercase;
 }
-.form-group.right{
-    margin-left:3%;
-    width:370px;
+
+/* ADD COMPANY */
+.otc__add-company{
+    margin-bottom:4%;
+    height:auto;
+    border:none;
+}
+.otc__add-company .card-body{
+    margin-top:3.5%;
+    border-left:0.5px solid #aaa;
+    background-color: #ccc;
+}
+.otc__add-company .form-group.r{
+    width:475px;
+    margin-bottom:2.5%;
+    padding:8px;
+}
+.otc__add-company .form-group.l{
+    width:450px;
+    margin-bottom:2.5%;
+    padding:8px;
+}
+.otc__add-company .card-body .btn{
+    margin-left:1%;
+    font-size:20px;
+    text-transform: uppercase;
 }

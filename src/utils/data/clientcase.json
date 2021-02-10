@@ -2,7 +2,7 @@
     {
         "id":1,
         "client": "John Trent",
-        "case": "Evation",
+        "case": "High Tax",
         "assigned":"Sarah Doe"
     },
     {
@@ -14,19 +14,19 @@
     {
         "id":3,
         "client": "John Trent",
-        "case": "Evation",
+        "case": "Property Tax",
         "assigned":null
     },
     {
         "id":4,
         "client": "Dram Ago",
-        "case": "Evation",
+        "case": "Value Tax",
         "assigned":"Sarah Doe"
     },
     {
         "id":5,
         "client": "Johnson Trent",
-        "case": "Evation",
+        "case": "Export Tax",
         "assigned":null
     },
     {

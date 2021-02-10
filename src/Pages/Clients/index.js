@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Modal from '../../Components/Modal'
-import AddClient from './AddClient'
 import SweetAlert from 'react-bootstrap-sweetalert';
-import Layout from '../../Components/Layout';
+import ClientManagement from './ClientManagement';
 
 const ClientTable = () => {
   var NewClients = JSON.parse(localStorage.getItem('Clients'));
-
-  const [show, setShow] = useState(false);
-  const openModal = () => setShow(true);
-  const closeModal = () => setShow(false);
 
   const [showAlert, setShowAlert] = useState('');
   const [error, setError] = useState('');
@@ -32,7 +26,7 @@ const ClientTable = () => {
   }, [NewClients])
 
   return (
-    <Layout>
+    <ClientManagement>
       <div className='otc__case container-fluid'>
         {showAlert && success && (
           <SweetAlert
@@ -56,12 +50,9 @@ const ClientTable = () => {
           <div className='row'>
             <h2 className="float-left">Clients</h2> 
             <span className='float-right' title='Add Case'>
-              <Link onClick={openModal}><i className='fa fa-plus-circle'></i></Link>
+              <Link to ='/clients/add/individual'><i className='fa fa-plus-circle'></i></Link>
             </span>
           </div>
-          <Modal show={show} close={closeModal} title="Add New Client">
-            <AddClient close={closeModal} />
-          </Modal>
           <div className='__table'>
             <table className='table table-responsive table-striped'>
               <thead>
@@ -124,7 +115,7 @@ const ClientTable = () => {
         </div>
             
       </div>
-    </Layout>
+    </ClientManagement>
   )
 }
 

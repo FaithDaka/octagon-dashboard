@@ -98,7 +98,7 @@ const ReAssign = ({ close, id, case_name, assigned, client }) => {
               value={emp_name}
               onChange={(e) => setName(e.target.value)}
             >
-              <option>None</option>
+              <option>{null}</option>
               {emps.length > 0 ? (
                 emps.map((e) => 
                   <option key={e.id} value={e.name}

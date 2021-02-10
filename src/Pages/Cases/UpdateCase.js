@@ -6,6 +6,7 @@ import CaseManagement from '.';
 import { useHistory } from 'react-router-dom';
 
 const UpdateCase = (props) => {
+  const _id = props.match.params.id
 
   const [clients, setClients] = useState(JSON.parse(getClients()))
   const [emps, setEmps] = useState(JSON.parse(getEmployees()))
@@ -42,10 +43,11 @@ const UpdateCase = (props) => {
     setLoading(true)
 
     _cases = _cases.filter(function (_cases) {
-      return _cases.id !== props.match.params.id;
+      return _cases.id !== _id;
     });
+
     const updateCase = {
-      id:props.match.params.id,
+      id:_id,
       name:desc,
       category:_cat,
       client:_client,
