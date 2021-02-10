@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import CaseManagement from '.'
 import LoadSpinner from '../../Components/LoadSpinner'
 import SweetAlert from 'react-bootstrap-sweetalert';
 import { getCases, getClients, getEmployees, getCategories } from '../../utils/helpers/storage';
 
-// eslint-disable-next-line react/prop-types
-const AddCase = ({ close }) => {
+const UpdateCase = ({ case_id, name, cate, create, assign, close }) => {
+
+  const [clients, setClients] = useState(JSON.parse(getClients()))
+  const [emps, setEmps] = useState(JSON.parse(getEmployees()))
+  const [cats, setCats] = useState(JSON.parse(getCategories()))
+  var [_cases, setCases] = useState(JSON.parse(getCases())) 
+
   const [_client, setClientName] = useState('')
   const [_cat, setCategory] = useState('')
   const [create_emp, setCreate] = useState('')
   const [assign_emp, setAssign] = useState('')
   const [desc, setDesc] = useState('')
-
-  const [clients, setClients] = useState(JSON.parse(getClients()))
-  const [emps, setEmps] = useState(JSON.parse(getEmployees()))
-  const [cats, setCats] = useState(JSON.parse(getCategories()))
-  const [_cases, setCases] = useState(JSON.parse(getCases())) 
 
   const [showAlert, setShowAlert] = useState('');
   const [error, setError] = useState('');
@@ -23,32 +22,6 @@ const AddCase = ({ close }) => {
   const hideAlert = () => setShowAlert(false)||setError('');
  
   const [loading, setLoading]= useState(false)
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true)
-    const _id = (_cases.length + 1);
-
-    const newClient = {
-      id:_id,
-      name:desc,
-      category:_cat,
-      client:_client,
-      created_by:create_emp,
-      assigned_to:assign_emp,
-      date_created: Date()
-    }
-
-    _cases.push(newClient)
-    setCases(_cases)
-    console.log('New Cases:', _cases)
-    localStorage.setItem('Cases', JSON.stringify(_cases))
-
-    setLoading(false)
-    setShowAlert(true);
-    setSuccess('New Case Created')
-    close()
-  }
 
   const loadData = () =>{
     setEmps(emps)
@@ -60,24 +33,37 @@ const AddCase = ({ close }) => {
   useEffect(()=>{
     loadData()
   },[])
-  
 
-  // const LocalStorage = localStorageKey => {
-  //   const [value, setValue] = useState(
-  //     localStorage.getItem(localStorageKey) || ''
-  //   );
-   
-  //   useEffect(() => {
-  //     localStorage.setItem(localStorageKey, value);
-  //   }, [value]);
-   
-  //   return [value, setValue];
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true)
 
-  
+    _cases = _cases.filter(function (_cases) {
+      return _cases.id !== case_id;
+    });
+    const updateClient = {
+      id:case_id,
+      name:desc,
+      category:_cat,
+      client:_client,
+      created_by:create_emp,
+      assigned_to:assign_emp,
+      date_created: Date()
+    }
+
+    _cases.push(updateClient)
+    setCases(_cases)
+    console.log('Updated Cases:', _cases)
+    localStorage.setItem('Cases', JSON.stringify(_cases))
+
+    setLoading(false)
+    setShowAlert(true);
+    setSuccess('Case Updated')
+    close()
+  }
 
   return (
-    <CaseManagement>
+    <div>
       {showAlert && success && (
         <SweetAlert
           success
@@ -107,7 +93,7 @@ const AddCase = ({ close }) => {
                 value={_client}
                 onChange={(e) => setClientName(e.target.value)}
               >
-                <option>{null}</option>
+                <option>{_client}</option>
                 {
                   clients.length > 0 ? (
                     clients.map((client) => 
@@ -127,7 +113,7 @@ const AddCase = ({ close }) => {
                 value={_cat}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option>{null}</option>
+                <option>{cate}</option>
                 { 
                   cats && cats.length > 0 ? (
                     cats.map((cat) => 
@@ -146,7 +132,7 @@ const AddCase = ({ close }) => {
                 value={create_emp}
                 onChange={(e) => setCreate(e.target.value)}
               >
-                <option>{null}</option>
+                <option>{create}</option>
                 { 
                   emps && emps.length > 0 ? (
                     emps.map((c) => 
@@ -166,7 +152,7 @@ const AddCase = ({ close }) => {
                 value={assign_emp}
                 onChange={(e) => setAssign(e.target.value)}
               >
-                <option>{null}</option>
+                <option>{assign}</option>
                 { 
                   emps && emps.length > 0 ? (
                     emps.map((c) => 
@@ -185,19 +171,19 @@ const AddCase = ({ close }) => {
                 type="text"
                 className="form-control"
                 placeholder="case description"
-                value={desc}
+                value={name}
                 onChange={(e) => setDesc(e.target.value)}
               />
             </div>
             <button type="submit" className="btn btn-primary">
-              {loading ? <LoadSpinner /> : 'Create Case'}
+              {loading ? <LoadSpinner /> : 'Update Case'}
             </button>
           </form>
         </div>
       </div>
-    </CaseManagement>
-
+            
+    </div>
   )
 }
 
-export default AddCase
+export default UpdateCase

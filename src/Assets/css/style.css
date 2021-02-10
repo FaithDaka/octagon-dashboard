@@ -109,6 +109,21 @@ input{
     text-overflow: wrap;
 }
 
+/* ASSIGN EMPLOYEE */
+.otc__assign input{
+    height:300px;
+    font-size:25px;
+    letter-spacing:0.3px;
+}
+.otc__assign select{
+    font-size:22px;
+    letter-spacing:0.4px;
+}
+.otc__assign option{
+    font-size:25px;
+    letter-spacing:0.4px;
+}
+
 /* ADD CASE */
 .otc__add-case input{
     height:300px;

@@ -19,19 +19,19 @@
     },
     {
         "id":4,
-        "client": "John Trent",
+        "client": "Dram Ago",
         "case": "Evation",
         "assigned":"Sarah Doe"
     },
     {
         "id":5,
-        "client": "John Trent",
+        "client": "Johnson Trent",
         "case": "Evation",
         "assigned":null
     },
     {
         "id":6,
-        "client": "John Trent",
+        "client": "Jordan Rent",
         "case": "Evation",
         "assigned":"Sarah Doe"
     }

@@ -2,34 +2,89 @@ import React, { useEffect, useState } from 'react'
 import Modal from '../../Components/Modal';
 import Assign from '../../Components/Modal/Assign';
 import ReAssign from '../../Components/Modal/ReAssign';
-import clientcase from '../../utils/data/clientcase.json'
+import AddClient from '../Clients/AddClient';
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 const DashboardPage = () => {
-  const [data, setData] = useState([]);
+  var NewCC = JSON.parse(localStorage.getItem('ClientCase'));
+
   const [assign, setAssign] = useState(false);
   const [reassign, setReassign] = useState(false);
-  const openAssign = () => setAssign(true);
+  const [add, setAdd] = useState(false);
+
+  const [id, setId] = useState()
+  const [c_name, setCName] = useState('')
+  const [assn, setAssn] = useState('')
+  const [client, setClient] = useState('')
+
+  const openAssign = (_id, _case, _client) => {
+    setId(_id)
+    setCName(_case)
+    setClient(_client)
+    setAssign(true);
+  }
   const closeAssign = () => setAssign(false);
 
-  const openReassign = () => setReassign(true);
-  const closeReassign = () => setReassign(false);
-
-  const loadData=()=>{
-    const data = JSON.parse(JSON.stringify(clientcase))
-    setData(data);
+  const openReassign = (_id, _case, _assd, _client) => {
+    setId(_id)
+    setCName(_case)
+    setAssn(_assd)
+    setClient(_client)
+    setReassign(true);
   }
 
-  useEffect(()=>(
-    loadData()
-  ),[])
+  const closeReassign = () => setReassign(false);
+
+  const openAdd = () => setAdd(true)
+  const closeAdd = () => setAdd(false)
+
+  const [showAlert, setShowAlert] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+  const hideAlert = () => setShowAlert(false) || setError('');
+
+  const handleDelete = (_id) =>{
+    NewCC = NewCC.filter(function (c_case) {
+      return c_case.id !== _id;
+    });
+    localStorage.setItem('ClientCase', JSON.stringify(NewCC))
+    setShowAlert(true);
+    setSuccess('Client-Case Deleted')
+  }
+
+  useEffect(()=>{
+    NewCC
+    console.log('Initial C-Cases:', NewCC)
+  }, [NewCC])
   
   return (
     <div className='__dash container-fluid'>
+      {showAlert && success && (
+        <SweetAlert
+          success
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          title={success}
+          timeout={3000}
+        />
+      )}
+      {showAlert && error && (
+        <SweetAlert
+          danger
+          onConfirm={() => hideAlert()}
+          onCancel={() => hideAlert()}
+          title={error}
+          timeout={4000}
+        />
+      )}
       <Modal show={assign} close={closeAssign} title="Assign Case to Employee">
-        <Assign close={closeAssign} />
+        <Assign close={closeAssign} id={id} case_name={c_name} client={client}/>
       </Modal>
       <Modal show={reassign} close={closeReassign} title="Re-Assign Case to Employee">
-        <ReAssign close={closeReassign} />
+        <ReAssign close={closeReassign} id={id} case_name={c_name} assigned={assn} client={client} />
+      </Modal>
+      <Modal show={add} close={closeAdd} title="Add New Client">
+        <AddClient close={closeAdd} />
       </Modal>
       <div className='__dash-add'>
         <div className='__dash-tab'>
@@ -38,11 +93,11 @@ const DashboardPage = () => {
         <div className='row'>
           <div className='__dash-client'>
             <i className='fa fa-user' style={{marginRight:'10px', fontSize:'26px', color:'#f00'}}></i>
-            <span> Add Individual </span>
+            <span> <a onClick={openAdd}>Add Individual</a> </span>
           </div>
           <div className='__dash-company'>
             <i className='fa fa-users' style={{marginRight:'10px', fontSize:'28px', color:'#f00'}}></i>
-            <span> Add Company</span>
+            <span> <a onClick={openAdd}>Add Company</a></span>
           </div>
         </div>
       </div>
@@ -51,15 +106,15 @@ const DashboardPage = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Client</th>
-              <th>Case</th>
-              <th>Employee</th>
+              <th style={{textTransform:'capitalize'}}>Client</th>
+              <th style={{textTransform:'capitalize'}}>Case</th>
+              <th style={{textTransform:'capitalize'}}>Employee</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {
-              data.length>0 ? data.map((cases)=>(
+              NewCC && NewCC.length>0 ? NewCC.map((cases)=>(
                 <tr key={cases.id}>
                   <th>OTC-{cases.id}</th>
                   <th>{cases.client}</th>
@@ -70,6 +125,7 @@ const DashboardPage = () => {
                       href="#"
                       className="btn-tab btn-danger-rgba"
                       title="Delete"
+                      onClick={()=>handleDelete(cases.id)}
                     >
                       <i className="far fa-trash-alt" style={{marginRight:'20px', fontSize:'28px', color:'#f00'}} />
                     </a>
@@ -78,14 +134,14 @@ const DashboardPage = () => {
                         <button
                           style={{fontSize:'18px', textTransform:'uppercase',
                             outline:'none', borderRadius:'15%', width:'100px', height:'38px'}}
-                          onClick={openAssign}>
+                          onClick={()=>openAssign(cases.id, cases.case, cases.client)}>
                     Assign
                         </button>
                         :
                         <button
                           style={{fontSize:'18px', textTransform:'uppercase',
                             outline:'none', borderRadius:'15%', width:'120px', height:'38px'}}
-                          onClick={openReassign}>
+                          onClick={()=>openReassign(cases.id, cases.case, cases.assigned, cases.client)}>
                   ReAssign
                         </button>
                     }

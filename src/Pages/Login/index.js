@@ -3,6 +3,7 @@ import LoadSpinner from '../../Components/LoadSpinner'
 import logo from '../../Assets/img/logo512.png'
 import '../../Assets/css/login.css'
 import { useHistory, withRouter } from 'react-router-dom'
+import {setLocalStorage} from '../../utils/helpers/set'
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -28,7 +29,9 @@ const Login = () => {
       setTimeout(()=>{
         setLoading(true);
       },3000)
+      setLocalStorage()
       setLoading(false)
+      
       history.push('/landing')
     }
     else{

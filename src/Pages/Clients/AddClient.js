@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 import Company from './Company';
 import Individual from './Individual';
 
-const AddClient = () => {
+const AddClient = ({ close }) => {
   const [currentTab, setCurrentTab] = useState('individual');
   const [tab, setTab] = useState(0);
 
   const renderView = () => {
     if (currentTab === 'individual') {
-      return <Individual />;
+      return <Individual close={close} />;
     }
     if (currentTab === 'company') {
-      return <Company />;
+      return <Company close={close} />;
     }
   };
 
