@@ -41,7 +41,7 @@ const UpdateCase = ({ case_id, name, cate, create, assign, close }) => {
     _cases = _cases.filter(function (_cases) {
       return _cases.id !== case_id;
     });
-    const updateClient = {
+    const updateCase = {
       id:case_id,
       name:desc,
       category:_cat,
@@ -51,7 +51,7 @@ const UpdateCase = ({ case_id, name, cate, create, assign, close }) => {
       date_created: Date()
     }
 
-    _cases.push(updateClient)
+    _cases.push(updateCase)
     setCases(_cases)
     console.log('Updated Cases:', _cases)
     localStorage.setItem('Cases', JSON.stringify(_cases))

@@ -29,7 +29,7 @@ const AddCase = ({ close }) => {
     setLoading(true)
     const _id = (_cases.length + 1);
 
-    const newClient = {
+    const newCase = {
       id:_id,
       name:desc,
       category:_cat,
@@ -39,7 +39,7 @@ const AddCase = ({ close }) => {
       date_created: Date()
     }
 
-    _cases.push(newClient)
+    _cases.push(newCase)
     setCases(_cases)
     console.log('New Cases:', _cases)
     localStorage.setItem('Cases', JSON.stringify(_cases))
