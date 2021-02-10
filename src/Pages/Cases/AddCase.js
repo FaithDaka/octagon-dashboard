@@ -3,9 +3,10 @@ import CaseManagement from '.'
 import LoadSpinner from '../../Components/LoadSpinner'
 import SweetAlert from 'react-bootstrap-sweetalert';
 import { getCases, getClients, getEmployees, getCategories } from '../../utils/helpers/storage';
+import { useHistory, withRouter } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-const AddCase = ({ close }) => {
+const AddCase = () => {
   const [_client, setClientName] = useState('')
   const [_cat, setCategory] = useState('')
   const [create_emp, setCreate] = useState('')
@@ -23,6 +24,7 @@ const AddCase = ({ close }) => {
   const hideAlert = () => setShowAlert(false)||setError('');
  
   const [loading, setLoading]= useState(false)
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +49,10 @@ const AddCase = ({ close }) => {
     setLoading(false)
     setShowAlert(true);
     setSuccess('New Case Created')
-    close()
+    setTimeout(() => {
+      history.push('/cases')
+    }, 3000);
+    
   }
 
   const loadData = () =>{
@@ -60,21 +65,6 @@ const AddCase = ({ close }) => {
   useEffect(()=>{
     loadData()
   },[])
-  
-
-  // const LocalStorage = localStorageKey => {
-  //   const [value, setValue] = useState(
-  //     localStorage.getItem(localStorageKey) || ''
-  //   );
-   
-  //   useEffect(() => {
-  //     localStorage.setItem(localStorageKey, value);
-  //   }, [value]);
-   
-  //   return [value, setValue];
-  // };
-
-  
 
   return (
     <CaseManagement>
@@ -97,107 +87,116 @@ const AddCase = ({ close }) => {
         />
       )}
       <div className="otc__add-case card">
-        <div className="card-header" />
-        <div className="card-body">
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label>Client</label>
-              <select
-                className="form-control"
-                value={_client}
-                onChange={(e) => setClientName(e.target.value)}
-              >
-                <option>{null}</option>
-                {
-                  clients.length > 0 ? (
-                    clients.map((client) => 
-                      <option key={client.id} value={client.name}
-                        onClick={()=>setClientName(client.name)}>
-                        {client.name}
-                      </option>)
-                  ) : (
-                    <LoadSpinner />
-                  )}
-              </select>
-            </div>
-            <div className="form-group">
-              <label>Category</label>
-              <select
-                className="form-control"
-                value={_cat}
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                <option>{null}</option>
-                { 
-                  cats && cats.length > 0 ? (
-                    cats.map((cat) => 
-                      <option key={cat.id} value={cat.name}>
-                        {cat.name}
-                      </option>)
-                  ) : (
-                    <LoadSpinner />
-                  )}
-              </select>
-            </div>
-            <div className="form-group">
-              <label>Created By</label>
-              <select
-                className="form-control"
-                value={create_emp}
-                onChange={(e) => setCreate(e.target.value)}
-              >
-                <option>{null}</option>
-                { 
-                  emps && emps.length > 0 ? (
-                    emps.map((c) => 
-                      <option key={c.id} value={c.name}
-                        onClick={()=>setCreate(c.name)}>
-                        {c.name}
-                      </option>)
-                  ) : (
-                    <LoadSpinner />
-                  )}
-              </select>
-            </div>
-            <div className="form-group">
-              <label>Assigned To</label>
-              <select
-                className="form-control"
-                value={assign_emp}
-                onChange={(e) => setAssign(e.target.value)}
-              >
-                <option>{null}</option>
-                { 
-                  emps && emps.length > 0 ? (
-                    emps.map((c) => 
-                      <option key={c.id} value={c.name}
-                        onClick={()=>setAssign(c.name)}>
-                        {c.name}
-                      </option>)
-                  ) : (
-                    <LoadSpinner />
-                  )}
-              </select>
-            </div>
-            <div className="form-group">
-              <label>Description</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="case description"
-                value={desc}
-                onChange={(e) => setDesc(e.target.value)}
-              />
-            </div>
-            <button type="submit" className="btn btn-primary">
-              {loading ? <LoadSpinner /> : 'Create Case'}
-            </button>
-          </form>
+        <div className="row">
+          <div>
+            <h2>ADD NEW CASE</h2>
+          </div>
+          <div className="card-body">
+            <form onSubmit={handleSubmit}>
+              <div className="row">
+                <div className="form-group left">
+                  <label>Client</label>
+                  <select
+                    className="form-control"
+                    value={_client}
+                    onChange={(e) => setClientName(e.target.value)}
+                  >
+                    <option>{null}</option>
+                    {
+                      clients.length > 0 ? (
+                        clients.map((client) => 
+                          <option key={client.id} value={client.name}
+                            onClick={()=>setClientName(client.name)}>
+                            {client.name}
+                          </option>)
+                      ) : (
+                        <LoadSpinner />
+                      )}
+                  </select>
+                </div>
+                <div className="form-group right">
+                  <label>Category</label>
+                  <select
+                    className="form-control"
+                    value={_cat}
+                    onChange={(e) => setCategory(e.target.value)}
+                  >
+                    <option>{null}</option>
+                    { 
+                      cats && cats.length > 0 ? (
+                        cats.map((cat) => 
+                          <option key={cat.id} value={cat.name}>
+                            {cat.name}
+                          </option>)
+                      ) : (
+                        <LoadSpinner />
+                      )}
+                  </select>
+                </div>
+              </div>
+              <div className="row">
+                <div className="form-group left">
+                  <label>Created By</label>
+                  <select
+                    className="form-control"
+                    value={create_emp}
+                    onChange={(e) => setCreate(e.target.value)}
+                  >
+                    <option>{null}</option>
+                    { 
+                      emps && emps.length > 0 ? (
+                        emps.map((c) => 
+                          <option key={c.id} value={c.name}
+                            onClick={()=>setCreate(c.name)}>
+                            {c.name}
+                          </option>)
+                      ) : (
+                        <LoadSpinner />
+                      )}
+                  </select>
+                </div>
+                <div className="form-group right">
+                  <label>Assigned To</label>
+                  <select
+                    className="form-control"
+                    value={assign_emp}
+                    onChange={(e) => setAssign(e.target.value)}
+                  >
+                    <option>{null}</option>
+                    { 
+                      emps && emps.length > 0 ? (
+                        emps.map((c) => 
+                          <option key={c.id} value={c.name}
+                            onClick={()=>setAssign(c.name)}>
+                            {c.name}
+                          </option>)
+                      ) : (
+                        <LoadSpinner />
+                      )}
+                  </select>
+                </div>
+              </div>
+              <div className="form-group desc">
+                <label>Description</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="case description"
+                  value={desc}
+                  onChange={(e) => setDesc(e.target.value)}
+                />
+              </div>
+              <button type="submit" className="btn btn-danger">
+                {loading ? <LoadSpinner /> : 'Create Case'}
+              </button>
+            </form>
+          </div>
         </div>
+        
       </div>
     </CaseManagement>
 
   )
 }
 
-export default AddCase
+export default withRouter(AddCase)

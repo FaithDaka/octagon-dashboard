@@ -16,7 +16,7 @@
     flex-direction: row;
     justify-content:center;
     align-items:center;
-    margin-left:58%;
+    margin-left:52%;
 }
 
 .otc__header-sidebar .__search{
@@ -68,8 +68,9 @@
 
 /* LAYOUT BODY */
 .otc__layout-body{
-    margin-left:8%;
-    margin-top:4%;
+    margin-left:6%;
+    margin-top:5%;
+    margin-right:5%;
 }
 
 /* TABS */
@@ -104,7 +105,7 @@
 
 /* DASHBOARD */
 .__dash{
-    height:600px;
+    height:680px;
     background-color: white;
     color:#00004d; 
     border:1px solid white;
@@ -118,11 +119,11 @@
 }
 .__dash-tab{
     border:0.3px solid #0086b3;
-    margin-left:21%;
+    margin-left:12%;
     padding-top:15px;
     border-radius:8%;
     height:250px;
-    width:340px;
+    width:320px;
     text-transform:uppercase;
     text-align:center;
 }
@@ -134,7 +135,7 @@
 .__dash-client{
     background-color: #ddd;
     position: absolute;
-    left:12%;
+    left:7.5%;
     margin-top:-4%;
     padding: 35px 50px 40px 35px;
     height:130px;
@@ -148,7 +149,7 @@
 .__dash-company{
     background:#ddd;
     position: absolute;
-    left:25%;
+    left:22.5%;
     margin-top:-4%;
     padding: 35px 50px 40px 40px;
     height:130px;
@@ -172,13 +173,13 @@
 .__dash .__table{
     width:60%;
     margin-left:5%;
-    margin-top:-2%;
+    margin-top:-1%;
 }
 .__dash .__table thead tr th{
     /* border:0.5px solid #0080b3;    */
     width:200px;
     text-transform: uppercase;
-    font-weight:600;
+    font-weight:800;
     font-size:23px;
 }
 .__dash .__table tbody tr th{

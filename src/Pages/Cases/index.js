@@ -1,11 +1,14 @@
 import React from 'react'
+import Layout from '../../Components/Layout'
 
 // eslint-disable-next-line react/prop-types
 const CaseManagement = ({children}) => {
   return (
-    <div>
-      {children}
-    </div>
+    <Layout>
+      <div className='otc__case container-fluid'>
+        {children}
+      </div>
+    </Layout>
         
   )
 }

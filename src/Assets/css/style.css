@@ -78,6 +78,7 @@ input{
 /* CASE MANAGEMENT */
 .otc__case{
     border:1px solid white;
+    background:white;
 }
 .__case-window{
     margin-top:5%;
@@ -125,9 +126,28 @@ input{
 }
 
 /* ADD CASE */
+.otc__add-case{
+    margin-left:5%;
+    height:600px;
+    border:none;
+}
+.otc__add-case .row h2{
+    margin-top:40%;
+    font-size:50px;
+    letter-spacing:0.6px;
+    text-decoration: underline;
+}
+.otc__add-case .card-body{
+    margin-top:2.5%;
+    margin-right:2%;
+    border-left:0.5px solid #aaa;
+    background-color: #ccc;
+    margin-left:16%;
+    padding:20px;
+}
 .otc__add-case input{
     height:300px;
-    font-size:25px;
+    font-size:20px;
     letter-spacing:0.3px;
 }
 .otc__add-case select{
@@ -135,10 +155,29 @@ input{
     letter-spacing:0.4px;
 }
 .otc__add-case option{
-    font-size:25px;
+    font-size:18px;
     letter-spacing:0.4px;
 }
-
+.otc__add-case .form-group.left{
+    width:450px;
+    margin-left:3%;
+    margin-bottom:6%;
+}
+.otc__add-case .form-group.right{
+    width:450px;
+    margin-left:3%;
+    margin-bottom:6%;
+}
+.otc__add-case .form-group.desc{
+    width:800px;
+    margin-left:2%;
+    margin-bottom:3%;
+}
+.otc__add-case .card-body .btn{
+    margin-left:2%;
+    font-size:20px;
+    text-transform: uppercase;
+}
 /* ADD CLIENT */
 .otc__tabs-c{
     border-bottom:1px solid red;
