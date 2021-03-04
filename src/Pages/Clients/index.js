@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import SweetAlert from 'react-bootstrap-sweetalert';
 import ClientManagement from './ClientManagement';
+import { useState as useGlobalState } from '@hookstate/core'
+import globalState from '../../state'
 
 const ClientTable = () => {
-  var NewClients = JSON.parse(localStorage.getItem('Clients'));
+  var { clientList } = useGlobalState(globalState)
+
+  var NewClients = JSON.parse(clientList.get())
 
   const [showAlert, setShowAlert] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const hideAlert = () => setShowAlert(false)||setError('');
 
+  const history = useHistory()
+
   const handleDelete = (_id) =>{
     NewClients = NewClients.filter(function (client) {
       return client.id !== _id;
     });
-    localStorage.setItem('Clients', JSON.stringify(NewClients))
+    clientList.set(JSON.stringify(NewClients))
+    // localStorage.setItem('Clients', JSON.stringify(NewClients))
     setShowAlert(true);
     setSuccess('Client Deleted')
   }
@@ -25,6 +32,9 @@ const ClientTable = () => {
     console.log('Initial Clients:', NewClients)
   }, [NewClients])
 
+  const clientProfile=(_id)=>{
+    history.push(`/client/${_id}`)
+  }
   return (
     <ClientManagement>
       <div className='otc__case container-fluid'>
@@ -69,7 +79,8 @@ const ClientTable = () => {
                 {
                   NewClients && NewClients.length>0 ? NewClients.map((client)=>(
                     <tr key={client.id}>
-                      <Link to ='/client-profile' style={{textDecoration:'underline', textTransform:'capitalize'}}><th>{client.name}</th></Link>
+                      <Link style={{textDecoration:'underline', textTransform:'capitalize'}}><th
+                        onClick={()=>clientProfile(client.id)}>{client.name}</th></Link>
                       { 
                         !client.correspondent ?
                           <th style={{textTransform:'capitalize'}}>

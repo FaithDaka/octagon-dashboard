@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import LoadSpinner from '../LoadSpinner';
-import { getEmployees, getClientCases } from '../../utils/helpers/storage';
 import SweetAlert from 'react-bootstrap-sweetalert';
+import { useState as useGlobalState } from '@hookstate/core'
+import globalState from '../../state'
+import { useHistory } from 'react-router-dom';
 
 const ReAssign = ({ close, id, case_name, assigned, client }) => {
+  var { ccList, empList } = useGlobalState(globalState)
+  var [c_case, setCCases] = useState(JSON.parse(ccList.get()))
+  var emps = JSON.parse(empList.get())
+
   const [emp_name, setName] = useState('')
-  const [emps, setEmps] = useState(JSON.parse(getEmployees()))
-  var [c_case, setCCases] = useState(JSON.parse(getClientCases()))
 
   const [showAlert, setShowAlert] = useState('');
   const [error, setError] = useState('');
@@ -14,6 +18,7 @@ const ReAssign = ({ close, id, case_name, assigned, client }) => {
   const hideAlert = () => setShowAlert(false)||setError('');
 
   const [loading, setLoading]= useState(false)
+  const history = useHistory()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,18 +37,20 @@ const ReAssign = ({ close, id, case_name, assigned, client }) => {
 
     c_case.push(newCC)
     setCCases(c_case)
+    ccList.set(JSON.stringify(c_case))
     console.log('New CC:', c_case)
-    localStorage.setItem('ClientCase', JSON.stringify(c_case))
 
     setLoading(false)
     setShowAlert(true);
     setSuccess('Updated')
+    setTimeout(() => {
+      history.push('/landing')
+    }, 2000);
     close()
   }
 
   const loadData = () =>{
-    setEmps(emps)
-    setCCases(c_case)
+    emps, c_case
   }
 
   useEffect(()=>{

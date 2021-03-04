@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import CaseManagement from '.'
 import LoadSpinner from '../../Components/LoadSpinner'
 import SweetAlert from 'react-bootstrap-sweetalert';
-import { getCases, getClients, getEmployees, getCategories } from '../../utils/helpers/storage';
+// import { getCases, getClients, getEmployees, getCategories } from '../../utils/helpers/storage';
 import { useHistory, withRouter } from 'react-router-dom';
+import { useState as useGlobalState } from '@hookstate/core'
+import globalState from '../../state'
 
 // eslint-disable-next-line react/prop-types
 const AddCase = () => {
@@ -13,10 +15,17 @@ const AddCase = () => {
   const [assign_emp, setAssign] = useState('')
   const [desc, setDesc] = useState('')
 
-  const [clients, setClients] = useState(JSON.parse(getClients()))
-  const [emps, setEmps] = useState(JSON.parse(getEmployees()))
-  const [cats, setCats] = useState(JSON.parse(getCategories()))
-  const [_cases, setCases] = useState(JSON.parse(getCases())) 
+  // const [clients, setClients] = useState(JSON.parse(getClients()))
+  // const [emps, setEmps] = useState(JSON.parse(getEmployees()))
+  // const [cats, setCats] = useState(JSON.parse(getCategories()))
+  // const [_cases, setCases] = useState(JSON.parse(getCases())) 
+
+  var { clientList, caseList, empList, catList} = useGlobalState(globalState)
+
+  var clients = JSON.parse(clientList.get())
+  var emps = JSON.parse(empList.get())
+  var cats = JSON.parse(catList.get())
+  var [_cases, setCases] = useState(JSON.parse(caseList.get()))
 
   const [showAlert, setShowAlert] = useState('');
   const [error, setError] = useState('');
@@ -43,8 +52,9 @@ const AddCase = () => {
 
     _cases.push(newCase)
     setCases(_cases)
+    caseList.set(JSON.stringify(_cases))
     console.log('New Cases:', _cases)
-    localStorage.setItem('Cases', JSON.stringify(_cases))
+    // localStorage.setItem('Cases', JSON.stringify(_cases))
 
     setLoading(false)
     setShowAlert(true);
@@ -56,10 +66,7 @@ const AddCase = () => {
   }
 
   const loadData = () =>{
-    setEmps(emps)
-    setClients(clients)
-    setCats(cats)
-    setCases(_cases)
+    emps,clients,cats, _cases
   }
 
   useEffect(()=>{

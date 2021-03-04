@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import CaseManagement from '.'
 import SweetAlert from 'react-bootstrap-sweetalert';
+import { useState as useGlobalState } from '@hookstate/core'
+import globalState from '../../state'
 
 const CaseTable = () => {
   const [showAlert, setShowAlert] = useState('');
@@ -9,10 +11,17 @@ const CaseTable = () => {
   const [success, setSuccess] = useState(false);
   const hideAlert = () => setShowAlert(false)||setError('');
 
-  var NewCases = JSON.parse(localStorage.getItem('Cases'))
+  var { caseList } = useGlobalState(globalState)
+
+  var NewCases = JSON.parse(caseList.get())
+  
   const history = useHistory()
 
   const updateCase =(_id)=>{
+    NewCases = NewCases.filter(function (_cases) {
+      return _cases.id !== _id;
+    });
+    caseList.set(JSON.stringify(NewCases))
     history.push(`/cases/update/${_id}`)
   }
 
@@ -20,7 +29,7 @@ const CaseTable = () => {
     NewCases = NewCases.filter(function (_cases) {
       return _cases.id !== _id;
     });
-    localStorage.setItem('Cases', JSON.stringify(NewCases))
+    caseList.set(JSON.stringify(NewCases))
     setShowAlert(true);
     setSuccess('Case Deleted')
   }

@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import LoadSpinner from '../../Components/LoadSpinner'
 import SweetAlert from 'react-bootstrap-sweetalert';
-import { getCases, getClients, getEmployees, getCategories } from '../../utils/helpers/storage';
 import CaseManagement from '.';
 import { useHistory } from 'react-router-dom';
+import { useState as useGlobalState } from '@hookstate/core'
+import globalState from '../../state'
 
 const UpdateCase = (props) => {
-  const _id = props.match.params.id
+  const _id = props.match.params.id 
 
-  const [clients, setClients] = useState(JSON.parse(getClients()))
-  const [emps, setEmps] = useState(JSON.parse(getEmployees()))
-  const [cats, setCats] = useState(JSON.parse(getCategories()))
-  var [_cases, setCases] = useState(JSON.parse(getCases())) 
+  var { clientList, caseList, empList, catList} = useGlobalState(globalState)
+
+  var clients = JSON.parse(clientList.get())
+  var emps = JSON.parse(empList.get())
+  var cats = JSON.parse(catList.get())
+  var [_cases, setCases] = useState(JSON.parse(caseList.get()))
 
   const [_client, setClientName] = useState('')
   const [_cat, setCategory] = useState('')
@@ -28,24 +31,23 @@ const UpdateCase = (props) => {
   const history = useHistory()
 
   const loadData = () =>{
-    setEmps(emps)
-    setClients(clients)
-    setCats(cats)
-    setCases(_cases)
+    emps,clients,cats, _cases
   }
 
+  // To get a single client object from the client array returns an empty object
+  var client = clients.filter(c=>{
+    return c.id === _id
+  })
+  
   useEffect(()=>{
     loadData()
+    console.log(client)
   },[])
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true)
-
-    _cases = _cases.filter(function (_cases) {
-      return _cases.id !== _id;
-    });
-
+    
     const updateCase = {
       id:_id,
       name:desc,
@@ -58,8 +60,8 @@ const UpdateCase = (props) => {
 
     _cases.push(updateCase)
     setCases(_cases)
+    caseList.set(JSON.stringify(_cases))
     console.log('Updated Cases:', _cases)
-    localStorage.setItem('Cases', JSON.stringify(_cases))
 
     setLoading(false)
     setShowAlert(true);
@@ -185,7 +187,7 @@ const UpdateCase = (props) => {
                   type="text"
                   className="form-control"
                   placeholder="case description"
-                  value={name}
+                  value={desc}
                   onChange={(e) => setDesc(e.target.value)}
                 />
               </div>

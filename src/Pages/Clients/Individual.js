@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import LoadSpinner from '../../Components/LoadSpinner';
-import { getClients } from '../../utils/helpers/storage';
+// import { getClients } from '../../utils/helpers/storage';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import AddClient from './AddClient';
 import { useHistory } from 'react-router-dom';
+import { useState as useGlobalState } from '@hookstate/core'
+import globalState from '../../state'
 
 const Individual = () => {
-  const [clients, setClients] = useState(JSON.parse(getClients()))
+  var { clientList } = useGlobalState(globalState)
+  const [clients, setClients] = useState(JSON.parse(clientList.get()))
 
   const [showAlert, setShowAlert] = useState('');
   const [error, setError] = useState('');
@@ -46,8 +49,9 @@ const Individual = () => {
 
     clients.push(newClient)
     setClients(clients)
+    clientList.set(JSON.stringify(clients))
     console.log('New Clients:', clients)
-    localStorage.setItem('Clients', JSON.stringify(clients))
+    // localStorage.setItem('Clients', JSON.stringify(clients))
 
     setLoading(false)
     setShowAlert(true);
@@ -82,7 +86,8 @@ const Individual = () => {
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>Name</label>
-              <div className="container-fluid">
+              <div className="
+              container-fluid">
                 <div className='row'>
                   <input
                     type="text"

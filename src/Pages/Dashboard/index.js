@@ -5,9 +5,13 @@ import ReAssign from '../../Components/Modal/ReAssign';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import Layout from '../../Components/Layout';
 import { Link } from 'react-router-dom';
+import { useState as useGlobalState } from '@hookstate/core'
+import globalState from '../../state'
 
 const DashboardPage = () => {
-  var NewCC = JSON.parse(localStorage.getItem('ClientCase'));
+  var { ccList } = useGlobalState(globalState)
+
+  var NewCC = JSON.parse(ccList.get())
 
   const [assign, setAssign] = useState(false);
   const [reassign, setReassign] = useState(false);
@@ -44,7 +48,7 @@ const DashboardPage = () => {
     NewCC = NewCC.filter(function (c_case) {
       return c_case.id !== _id;
     });
-    localStorage.setItem('ClientCase', JSON.stringify(NewCC))
+    ccList.set(JSON.stringify(NewCC))
     setShowAlert(true);
     setSuccess('Client-Case Deleted')
   }

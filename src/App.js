@@ -4,6 +4,7 @@ import AddCase from './Pages/Cases/AddCase';
 import CaseTable from './Pages/Cases/CaseTable';
 import UpdateCase from './Pages/Cases/UpdateCase';
 import ClientTable from './Pages/Clients';
+import ClientProfile from './Pages/Clients/ClientProfile';
 import Company from './Pages/Clients/Company';
 import Individual from './Pages/Clients/Individual';
 import DashboardPage from './Pages/Dashboard';
@@ -21,6 +22,7 @@ const App = () => {
         <Route exact path='/cases/update/:id' component={UpdateCase}/>
         <Route exact path='/clients/add/individual' component={Individual}/>
         <Route exact path='/clients/add/company' component={Company}/>
+        <Route exact path='/client/:id' component={ClientProfile}/>
       </Switch>
     </BrowserRouter>
   )
