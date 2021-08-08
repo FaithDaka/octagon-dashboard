@@ -79,6 +79,7 @@ const DashboardPage = () => {
             timeout={4000}
           />
         )}
+        
         <Modal show={assign} close={closeAssign} title="Assign Case to Employee">
           <Assign close={closeAssign} id={id} case_name={c_name} client={client}/>
         </Modal>

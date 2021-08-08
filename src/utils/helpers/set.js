@@ -12,7 +12,3 @@ export const setLocalStorage =()=>{
   localStorage.setItem('Cats', JSON.stringify(categories))
   localStorage.setItem('ClientCase', JSON.stringify(clientcases))
 }
-
-// export const addCase = (_case) => {
-//   localStorage.setItem('Cases', JSON.stringify(_case));
-// }
