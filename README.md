@@ -1,3 +1,5 @@
+ReactJS dashboard for a company to create, view, update and delete data. This data is stored in local storage and its state is managed using Redux.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
